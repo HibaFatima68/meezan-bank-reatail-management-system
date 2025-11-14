@@ -1,7 +1,8 @@
 // src/features/auth/components/OTPScreen.js
 import React, { useState } from 'react';
 import Button from '../../../shared/components/ui/Button';
-const OTPScreen = ({ email, onVerify, onResendOtp }) => {
+
+const OTPScreen = ({ email, onVerify, onResendOtp, onBack }) => {
   const [otp, setOtp] = useState(['', '', '', '', '', '']);
 
   const handleOtpChange = (index, value) => {
@@ -47,9 +48,12 @@ const OTPScreen = ({ email, onVerify, onResendOtp }) => {
           Verify OTP
         </Button>
         
-        <div className="otp-actions">
+        <div className="otp-actions" style={{ marginTop: '20px', textAlign: 'center' }}>
           <Button type="button" variant="text" onClick={onResendOtp}>
             Resend OTP
+          </Button>
+          <Button type="button" variant="text" onClick={onBack} style={{ marginLeft: '10px' }}>
+            Back to Login
           </Button>
         </div>
       </form>

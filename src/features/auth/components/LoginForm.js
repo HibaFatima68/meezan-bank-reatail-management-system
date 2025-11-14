@@ -3,10 +3,12 @@ import React, { useState } from 'react';
 import Button from '../../../shared/components/ui/Button';
 import UserTypeSelector from './UserTypeSelector';
 import OTPScreen from './OTPScreen';
+import ForgotPassword from './ForgotPassword';
 
 const LoginForm = ({ onLogin, onUserTypeChange }) => {
   const [isNewUser, setIsNewUser] = useState(false);
   const [showOtp, setShowOtp] = useState(false);
+  const [showForgotPassword, setShowForgotPassword] = useState(false);
   const [userType, setUserType] = useState('student');
   const [formData, setFormData] = useState({
     email: '',
@@ -91,6 +93,31 @@ const LoginForm = ({ onLogin, onUserTypeChange }) => {
     }
   };
 
+  const handleForgotPassword = () => {
+    setShowForgotPassword(true);
+  };
+
+  const handlePasswordReset = (email) => {
+    // Simulate sending reset code to email
+    console.log('Password reset code sent to:', email);
+    alert(`📧 Password reset code sent to ${email}\n\n(In real implementation, this would send an actual email)`);
+  };
+
+  const handleBackToLogin = () => {
+    setShowForgotPassword(false);
+    setShowOtp(false);
+  };
+
+  // If Forgot Password screen should be shown
+  if (showForgotPassword) {
+    return (
+      <ForgotPassword 
+        onResetPassword={handlePasswordReset}
+        onBackToLogin={handleBackToLogin}
+      />
+    );
+  }
+
   // If OTP screen should be shown
   if (showOtp) {
     return (
@@ -98,6 +125,7 @@ const LoginForm = ({ onLogin, onUserTypeChange }) => {
         email={formData.email}
         onVerify={handleOtpVerify}
         onResendOtp={() => console.log('Resend OTP')}
+        onBack={handleBackToLogin}
       />
     );
   }
@@ -179,6 +207,20 @@ const LoginForm = ({ onLogin, onUserTypeChange }) => {
               onChange={handleInputChange}
               required 
             />
+          </div>
+        )}
+
+        {/* Forgot Password Link - Only show for login, not registration */}
+        {!isNewUser && (
+          <div className="forgot-password-link">
+            <Button 
+              type="button" 
+              variant="text" 
+              onClick={handleForgotPassword}
+              style={{ fontSize: '14px', padding: '5px 0' }}
+            >
+              Forgot Password?
+            </Button>
           </div>
         )}
 
