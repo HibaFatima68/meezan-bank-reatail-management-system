@@ -8,11 +8,11 @@ connection = oracledb.connect(
 
 cursor = connection.cursor()
 
-cursor.execute("""CREATE USER bank_user IDENTIFIED BY bank_pass""")
+cursor.execute("""CREATE USER C##dbproj IDENTIFIED BY 123""")
 
-cursor.execute("GRANT CONNECT, RESOURCE TO bank_user")
+cursor.execute("GRANT CONNECT, RESOURCE TO C##dbproj")
 
-print("Oracle schema (user) 'bank_user' created successfully.")
+print("Oracle schema (user) 'C##dbproj' created successfully.")
 
 cursor.close()
 connection.close()

@@ -20,7 +20,7 @@ app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'supersecretkey')
 bcrypt = Bcrypt(app)
 
 # Import models (now just helper functions)
-from app.models.user import User, Transaction, Beneficiary, BillPayment, insert_hyphens
+from app.models.user import User, Transaction, Beneficiary, insert_hyphens
 
 # Import routes (after models are defined)
 from app.routes.root import *
