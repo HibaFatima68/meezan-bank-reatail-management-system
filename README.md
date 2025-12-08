@@ -178,7 +178,7 @@ http://127.0.0.1:5000
 ## License
 
 This project is built for academic purposes (IBA Karachi).
-Not intended for real-world financial deployment.
+Not intended for real world financial deployment.
 
 ---
 
