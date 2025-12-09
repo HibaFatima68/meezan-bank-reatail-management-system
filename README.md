@@ -163,7 +163,7 @@ http://127.0.0.1:5000
 * Structuring a full-stack banking system
 * DAO design pattern
 * Secure session-based authentication
-* Implementing banking logic (loans, lockers, transactions)
+* Implementing Retail banking logic (loans, lockers, transactions,deposits)
 
 ---
 
